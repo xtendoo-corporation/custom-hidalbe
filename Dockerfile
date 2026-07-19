@@ -5,6 +5,7 @@ FROM tecnativa/doodba:19.0
 # DEFAULT_REPO_PATTERN_ODOO/DEFAULT_REPO_PATTERN.
 COPY odoo/custom/src/repos.yaml /opt/odoo/custom/src/repos.yaml
 COPY odoo/custom/src/addons.yaml /opt/odoo/custom/src/addons.yaml
+COPY odoo/custom/dependencies/ /opt/odoo/custom/dependencies/
 
 RUN groupadd -g 1001 odoo && \
     useradd -u 1001 -g odoo -d /home/odoo -m -s /bin/bash odoo && \
