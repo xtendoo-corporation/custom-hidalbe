@@ -6,6 +6,10 @@ FROM tecnativa/doodba:19.0
 COPY odoo/custom/src/repos.yaml /opt/odoo/custom/src/repos.yaml
 COPY odoo/custom/src/addons.yaml /opt/odoo/custom/src/addons.yaml
 COPY odoo/custom/dependencies/ /opt/odoo/custom/dependencies/
+# Módulos propios (a medida para Hidalbe). doodbalib enlaza automáticamente
+# todo lo que haya aquí (PRIVATE usa glob "*" por defecto, no requiere
+# entrada en addons.yaml) — pero solo si el código llega a la imagen.
+COPY odoo/custom/src/private/ /opt/odoo/custom/src/private/
 
 RUN groupadd -g 1001 odoo && \
     useradd -u 1001 -g odoo -d /home/odoo -m -s /bin/bash odoo && \
